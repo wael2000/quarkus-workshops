@@ -2,6 +2,19 @@ schemaVersion: 2.2.0
 metadata:
   name: superheroes-workshop
 components:
+  - name: kubedock
+    container:
+      image: ghcr.io/joyrex2001/kubedock:latest
+      memoryLimit: 512Mi
+      cpuLimit: "500m"
+      env:
+        - name: ENABLE_BUILD_SUPPORT
+          value: "true"
+      endpoints:
+        - name: kubedock
+          exposure: none
+          protocol: tcp
+          targetPort: 2475
   - name: tools
     container:
       image: quay.io/devfile/universal-developer-image@sha256:75034f0dad7a6df3db53e20fc3597b68f2311e556164d47aa9151d3b3584bbce
